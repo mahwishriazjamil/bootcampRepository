@@ -29,15 +29,14 @@ module "application" {
 
   vpc_id = "${module.vpc.vpc_id}"
   ingress_with_cidr_blocks = [
-    {  rule = "https-443-tcp"     cidr_blocks = "0.0.0.0/16" },
-    {  rule = "http-80-tcp"       cidr_blocks = "0.0.0.0/16" },
+    {  rule = "https-443-tcp"     cidr_blocks = "0.0.0.0/0" },
+    {  rule = "http-80-tcp"       cidr_blocks = "0.0.0.0/0" },
     {  rule = "ssh-tcp"           cidr_blocks = "212.183.131.197/32" }   
     ]
 
   egress_with_cidr_blocks = [
     {  rule = "https-443-tcp"    cidr_blocks = "0.0.0.0/0"     },
-    {  rule = "http-80-tcp"      cidr_blocks = "0.0.0.0/0"     },
-    {  rule = "ssh-tcp"          cidr_blocks = "10.10.0.0/16"  }
+    {  rule = "http-80-tcp"      cidr_blocks = "0.0.0.0/0"     }
     ]
 }
 
