@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Web Page</h1>
+<p>My first paragraph.</p>
+
+<script>
+
+function sendMessage(input){
+messageJSON =sendNewMessage(input,getRecipent())
+return messageJSON;
+}
+
+
+function getUser(){
+    //placeholder code.
+    return "Joshua"
+}
+
+function getRecipent(){
+    //placeholder
+    return "Brandon"
+}
+
+function sendNewMessage (input, newRecipient){
+var currentDate = new Date(),
+out = { user: getUser() , message: input, time: currentDate.getTime() ,recipient: newRecipient  }
+messageJSON = JSON.stringify(out);
+return messageJSON;
+}
+
+var obj = sendMessage("hello");
+
+window.alert(obj);
+</script>
+
+</body>
+</html>
