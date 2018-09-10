@@ -73,7 +73,10 @@
     <div class="checkbox">
       <label><input type="checkbox">Remember me</label>
     </div>
-    <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
+     <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
+     <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-up" name="signup">Sign Up</button>
+     <button class="mdl-button mdl-js-button mdl-button--raised" disabled id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
+     <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
   </form>
 </div>
 <div class="mdl-card__supporting-text mdl-color-text--grey-600">
@@ -82,11 +85,7 @@
 
   <br/><br/>
  
-  <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-up" name="signup">Sign Up</button>
-  &nbsp;&nbsp;&nbsp;
-  <button class="mdl-button mdl-js-button mdl-button--raised" disabled id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
-  &nbsp;&nbsp;&nbsp;
-  <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
+
 
 <div class="quickstart-user-details-container">
   Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
@@ -246,7 +245,7 @@
         document.getElementById('quickstart-verify-email').disabled = true;
         // [END_EXCLUDE]
         if (user) {
-          // User is signed in.
+          // User is signed in. 
           var displayName = user.displayName;
           var email = user.email;
           var emailVerified = user.emailVerified;
