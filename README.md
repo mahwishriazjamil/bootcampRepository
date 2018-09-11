@@ -1,2 +1,1 @@
-# bootcampRepository
-# testing git permissions - brandon
+HTML directory will be uploaded to EC2 instance

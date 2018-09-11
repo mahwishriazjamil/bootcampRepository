@@ -1,0 +1,5 @@
+AWS/terraform.tfstate
+AWS/terraform.tfstate.backup
+AWS/authentication.tf
+AWS/.terraform
+AWS/access/*

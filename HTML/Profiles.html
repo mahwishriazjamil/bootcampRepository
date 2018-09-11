@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Profiles</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="/__/firebase/5.4.1/firebase-app.js"></script>
+  <script src="/__/firebase/5.4.1/firebase-auth.js"></script>
+  <script src="/__/firebase/init.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+      apiKey: "AIzaSyD3dPT-gwDrtBnvo9_DQwlRVFL2IQ05RzM",
+      authDomain: "rtesbootcamp.firebaseapp.com",
+      databaseURL: "https://rtesbootcamp.firebaseio.com",
+      projectId: "rtesbootcamp",
+      storageBucket: "rtesbootcamp.appspot.com",
+      messagingSenderId: "623287477132"
+  };
+  firebase.initializeApp(config);
+  console.log("Firebase initialized");
+  </script>
+  <script>
+
+    function signOut(){
+      firebase.auth().signOut();
+      window.location.href= "./index.html"
+    }
+  </script>
+
  
 </head>
 <body>
@@ -15,7 +41,7 @@
                 <p>This is a list of profiles which have been been created...</p>    
                <a href="#" class="pull-right">Delete User</a>     
                 <a href="#" class="pull-right">Edit User| </a> 
-                    <a href="#" class="pull-right">Add User| </a>
+                    <a href="./New_RCS_User.html" class="pull-right">Add User| </a>
                 <table class="table table-bordered">
                   <thead>
                     <tr>
@@ -58,7 +84,7 @@
                   </tbody>
                 </table>
               </div>
-              
+              <button class="mdl-button mdl-js-button mdl-button--raised" onclick="signOut();">Sign Out</button>
               </body>
 </body>
 </html>
