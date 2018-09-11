@@ -1,3 +1,38 @@
+// Initialize Firebase
+function initializeFirebase(){
+var config = {
+    apiKey: "AIzaSyD3dPT-gwDrtBnvo9_DQwlRVFL2IQ05RzM",
+    authDomain: "rtesbootcamp.firebaseapp.com",
+    databaseURL: "https://rtesbootcamp.firebaseio.com",
+    projectId: "rtesbootcamp",
+    storageBucket: "rtesbootcamp.appspot.com",
+    messagingSenderId: "623287477132"
+};
+firebase.initializeApp(config);
+console.log("Firebase initialized");
+
+}
+function signOut(){
+    firebase.auth().signOut();
+    window.location.href= "./index.html"
+  }
+
+ function autoSignOut(){
+     firebase.auth().onAuthStateChanged(function(user) {
+         // [START_EXCLUDE silent]
+         //document.getElementById('quickstart-verify-email').disabled = true;     
+         // [END_EXCLUDE]
+         if (!user) {
+           // User is signed out
+           
+          window.location.href = "./index.html"
+          } 
+         // [START_EXCLUDE silent]
+         document.getElementById('quickstart-sign-in').disabled = false;
+         // [END_EXCLUDE]
+       });
+     
+     }
 
 
 function sendMessage(input){
@@ -141,13 +176,13 @@ function toggleSignIn() {
       if (user) {
         // User is signed in. 
         window.location.href = "./Profiles.html" 
-        //var displayName = user.displayName;
-        //var email = user.email;
-        //var emailVerified = user.emailVerified;
-        //var photoURL = user.photoURL;
-        //var isAnonymous = user.isAnonymous;
-        //var uid = user.uid;
-        //var providerData = user.providerData;
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
         // [START_EXCLUDE]
         document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
         document.getElementById('quickstart-sign-in').textContent = 'Sign out';
@@ -159,6 +194,7 @@ function toggleSignIn() {
       } else {
         // User is signed out.
         // [START_EXCLUDE]
+        
         document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
         document.getElementById('quickstart-sign-in').textContent = 'Sign in';
         document.getElementById('quickstart-account-details').textContent = 'null';
