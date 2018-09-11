@@ -1,3 +1,7 @@
+body {
+    background-image: url("clean-2721103_1920.jpg");
+    opacity: 0.9;
+}
 .chatperson{
     display: block;
     border-bottom: 1px solid #eee;
@@ -35,12 +39,56 @@
       height: 50%;
   }
   .avatar {
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
+    float:  left;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
+    margin-right: 20px;
 }
 
-#icons{
-    width: 50px;
+#fortesting{
+    display: inline;
+}
+section{
+    width: 80%;
+    margin: auto;
+}
+.mb-1{
+float: left;
+}
+#lastMessage{
+    float: left;
+    margin-right : 20ox;
+
+}
+/* #messageBox1 {
+    width: 5%;
+    margin-right: 70px;
+}
+
+#messageBox {
+    width: 50%;
+    margin-right: 160px;
+} */
+#Messages{
+    position: absolute;
+    bottom: 0;
+    /* right: 0; */
+    width: 100%;
+}
+#textBoxformessaging{
+    /* width: 40%; */
+}
+.chatbody{
+    z-index: 9999;
+    background-color: white;
+    height: 75%;
+    width: 104%;
+    border-radius: 10px;
+}
+#newid{
+    width: 90%;
+}
+#chatmenu{
+    border-radius: 10px;
 }
