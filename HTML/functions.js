@@ -227,6 +227,11 @@ function toggleSignIn() {
     })
     
   }
+  
+  function customSignUp(){
+    handleSignUp().then(function (){sendEmailVerification();} );
+    
+  }
 
   function testInput(email){
       window.alert(email)
