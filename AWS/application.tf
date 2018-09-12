@@ -31,7 +31,7 @@ module "application" {
   ingress_with_cidr_blocks = [
     {  rule = "https-443-tcp"     cidr_blocks = "0.0.0.0/0" },
     {  rule = "http-80-tcp"       cidr_blocks = "0.0.0.0/0" },
-    {  rule = "ssh-tcp"           cidr_blocks = "212.183.131.197/32" }   
+    {  rule = "ssh-tcp"           cidr_blocks = "212.183.131.198/32" }   
     ]
 
   egress_with_cidr_blocks = [
