@@ -6,7 +6,8 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
 		<style>
 		
 		img {
@@ -45,43 +46,24 @@
 	<img src="https://thumb.ibb.co/fGHxAU/vf_logo_large.png" alt="" width="72" height="72">
 
 
-	
-	<div class="container">
-		<div class="row" style="border:10px gray">
-			
-			<div class="col-sm">
-				<img src="http://api.randomuser.me/portraits/men/49.jpg" alt="John Smith">
-			</div>
-			<br>
-			
-			<div class="col-sm">
-				<p id="name">John Smith</p>
-				<p id="number">07839918842</p>
-			</div>
-			
-			<script type="text/javascript">var chatLink = window.location;
-			console.log(chatLink);
-			</script>
-			
-			<div class="col-sm">
-				<button type="button" class="btn btn-light"><a href="Webchat1.html">Chat</a></button>
-				<button type="button" class="btn btn-light"><a href="editContact.html">Edit Contact</a></button>
-			</div>
-		</div>
-		
-		
-	</div>
-	
-		<div class="container">
-		<div class="row" style="border:10px gray">
-			
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+		<script src="RtesFakeBackend.js"></script>
+		<script type="text/javascript"> 
+			var app = angular.module("myApp", []);
+			app.controller("myCtrl", function($scope) {
+				$scope.records = read_agenda_contacts('user_id', 'rcs_profile_id');
+			});
+
+		</script>
+	<div class="container" ng-app="myApp"ng-controller="myCtrl">
+		<div class="row"  ng-repeat="agenda_entry in records" style="border:10px gray">
 			<div class="col-sm">
 				<img src="https://thumb.ibb.co/fO6ps9/514623738_612x612.jpg" alt="Louanne Gervais">
 			</div>
 			
 			<div class="col-sm">
-				<p id="name">Louanne Gervais</p>
-				<p id="number">07237938019</p>
+				<p id="name">{{agenda_entry.contact_name}}</p>
+				<p id="number">{{agenda_entry.contact_msisdn}}</p>
 			</div>
 			
 			<div class="col-sm">
@@ -89,27 +71,8 @@
 				<button type="button" class="btn btn-light"><a href="editContact.html">Edit Contact</a></button>
 			</div>
 		</div>
-		
 		
 	</div>
-	
-		<div class="container">
-		<div class="row" style="border:10px gray">
-			
-			<div class="col-sm">
-				<img src="https://thumb.ibb.co/duvtKp/pexels_photo_733872.jpg" alt="Sofia Derrickson">
-			</div>
-			
-			<div class="col-sm">
-				<p id="name">Sofia Derrickson</p>
-				<p id="number">07847029483</p>
-			</div>
-			
-			<div class="col-sm">
-				<button type="button" class="btn btn-light"><a href="Webchat1.html">Chat</a></button>
-				<button type="button" class="btn btn-light"><a href="editContact.html">Edit Contact</a></button>
-			</div>
-		</div>
 
 <div>
 	<br>

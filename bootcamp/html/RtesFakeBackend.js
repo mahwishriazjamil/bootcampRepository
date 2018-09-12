@@ -1,14 +1,7 @@
-<html lang="en">
-    <head>
-        
-    </head>
-    <body>
-        
-        
-        <!-- Database functions-->
-        <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 
-        <script type="text/javascript">            
+        
+
+       
             var config = {
                 apiKey: "AIzaSyD3dPT-gwDrtBnvo9_DQwlRVFL2IQ05RzM",
                 authDomain: "rtesbootcamp.firebaseapp.com",
@@ -73,12 +66,53 @@
                 
                 return firebase.database().ref().update(updates);
             }
+            
+            function read_agenda_contacts(user_id, rcs_profile_id){                
+                var fake_agenda = [
+                    {
+                        "agenda_entry_id": "-LMD6rXJxMuw0AjXbE77",
+                        "contact_msisdn": "+4964534324412",
+                        "contact_name": "Test_1 VF-DE",
+                        "rcs_profile_id": "1235gffsutee45",
+                        "user_id": "LKIA1uhgKqWLj9yKczhPXSu9o8v2"
+                    },
+                    {
+                        "agenda_entry_id": "-LMD7Cs1zNiChPCKbp0Y",
+                        "contact_msisdn": "+4964534324412",
+                        "contact_name": "Test_2 VF-DE",
+                        "rcs_profile_id": "1235gffsutee45",
+                        "user_id": "LKIA1uhgKqWLj9yKczhPXSu9o8v2"
+                    }
+                ];
 
-        </script>
+                return fake_agenda;
+            }
 
+            //write in chat_window
+            function write_agenda_contact(user_id, rcs_profile_id, agenda_entry_id, contact_name, contact_msisdn){
+                
+                if(agenda_entry_id == null){
+                    // Get a key for a new Post.
+                    console.log("New Agenda Entry");
+                    agenda_entry_id = firebase.database().ref().child("rcs_user_agenda/").push().key;
+                }
+                // A post entry.
+                var postData = {
+                    "user_id": user_id,
+                    "rcs_profile_id": rcs_profile_id, 
+                    "agenda_entry_id": agenda_entry_id, 
+                    "contact_name": contact_name, 
+                    "contact_msisdn": contact_msisdn, 
+                };
+                
+                console.log("key: " + agenda_entry_id);
+                // Write the new post's data simultaneously in the posts list and the user's post list.
+                var updates = {};
+                updates['/rcs_user_agenda/' + agenda_entry_id] = postData;
+                
+                return firebase.database().ref().update(updates);
+            }
 
-        <!-- RTES scpecific functions-->
-        <script type="text/javascript">
             var messages = []; 
 
             function sendMessage(user_id, rcs_user_id, b_party, message_text){
@@ -112,11 +146,6 @@
             //console.log(checkMessageStatus(messages[0].message_id));
 
             //console.log(write_chat_window("user_id", "rcs_profile_id", "chat_window_id", "user_b_id", "message_id", "sender", Date.now(), "message_text", "status_id", "sent", Date.now()));
-            read_chat_window("user_id", "rcs_profile_id", "-LMCPl7r4Jj5t-dHNB2Y")
-            console.log(chat_windows);
-        </script>
-
-
-
-    </body>
-</html>
+            //read_chat_window("user_id", "rcs_profile_id", "-LMCPl7r4Jj5t-dHNB2Y");
+            //console.log(chat_windows);
+            //write_agenda_contact("LKIA1uhgKqWLj9yKczhPXSu9o8v2", "1235gffsutee45", null, "Test_2 VF-DE", "+4964534324412");
