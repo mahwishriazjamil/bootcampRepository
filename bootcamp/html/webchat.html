@@ -1,0 +1,47 @@
+<html>
+  <head>
+	  <script src="bootstrap.min.js"></script>
+	  <link href="../CSS/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	  <link rel="stylesheet" href="../css/webchat.css">
+  </head> 
+  <section>
+    <div class="container-fluid text-center">
+      <h1 id="headingtext">V-Message</h1>
+      <img src="https://thumb.ibb.co/fGHxAU/vf_logo_large.png" alt="" width="72" height="72">
+      <br>
+      <br>
+      <div class="row">
+        <script>
+          document.write("<div class=\"card col-md -4\" id=\"chatmenu\"  style=\"overflow:scroll;\">")
+          document.write("<ul class=\"list-group list-group-flush\" style=\"height: 70%;\">")
+
+          for(var i=0; i<3; i++) {
+            document.write("<li class=\"list-group-item\">")
+            document.write("<div class=\"\">")
+            document.write("<img src=\"img/avatar.png\" alt=\"Avatar\" class=\"avatar\" id=\"icons\"> ")
+            document.write("<h5 class=\"mb-1\">Name</h5>")
+            document.write("</div>")
+            document.write("<br>")
+            document.write("<br>")
+            document.write("<div>")
+            document.write("<p id=\"lastMessage\">Last msg</p>")
+            document.write("</div>")
+            document.write("</li>")
+          }
+          document.write("</ul>")  
+        </script> 
+      </div>
+
+    <div class="col-md-8">
+      <div class="chatbody"></div>
+        <div class="col-md-12" id="Messages">
+          <div class="row">
+            <input  class="col-md-10 form-control" id="newid" type="text" placeholder="Message..." [(ngModel)]="message"  />
+            <button class="col-md-2 btn btn-danger btn-block"(click)="">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</html>
+
