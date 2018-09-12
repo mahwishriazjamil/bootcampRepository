@@ -1,0 +1,114 @@
+<html lang="en">
+    <head>
+        
+    </head>
+    <body>
+        
+        
+        <!-- Database functions-->
+        <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+
+        <script type="text/javascript">
+            console.log("Entering...");
+            
+            var config = {
+                apiKey: "AIzaSyD3dPT-gwDrtBnvo9_DQwlRVFL2IQ05RzM",
+                authDomain: "rtesbootcamp.firebaseapp.com",
+                databaseURL: "https://rtesbootcamp.firebaseio.com",
+                projectId: "rtesbootcamp",
+                storageBucket: "rtesbootcamp.appspot.com",
+                messagingSenderId: "623287477132"
+            };
+
+            // Initialize your Firebase app
+            var fb = firebase.initializeApp(config);
+            console.log(fb);
+
+
+            /* DB table format
+            // user_id, rcs_profile_id, chat_window_id, user_b_id, messages { message_id, sender, timestamp, message_text, status { status_id, value, update_timestamp } }
+            */
+                
+            //Read from chat_window
+                function read_chat_window(){
+
+                }
+            //write in chat_window
+            function write_chat_window(user_id, rcs_profile_id, chat_window_id, user_b_id, message_id, sender, timestamp, message_text, status_id, value, update_timestamp){
+                
+                // Get a key for a new Post.
+                var newPostKey = firebase.database().ref().child("chat_window/").push().key;
+
+
+                // A post entry.
+                var postData = {
+                    "user_id": user_id,
+                    "rcs_profile_id": rcs_profile_id, 
+                    "chat_window_id": newPostKey, 
+                    "user_b_id": user_b_id, 
+                    "messages": { 
+                        "message_id": message_id, 
+                        "sender": sender, 
+                        "timestamp": timestamp, 
+                        "message_text": message_text, 
+                        "status" : { 
+                            "status_id": status_id, 
+                            "value": value, 
+                            "update_timestamp": update_timestamp 
+                        }
+                    }
+                };
+                
+                console.log("key: " + newPostKey);
+                // Write the new post's data simultaneously in the posts list and the user's post list.
+                var updates = {};
+                updates['/chat_window/' + newPostKey] = postData;
+                
+                return firebase.database().ref().update(updates);
+            }
+
+        </script>
+
+
+        <!-- RTES scpecific functions-->
+        <script type="text/javascript">
+            var messages = []; 
+
+            function sendMessage(user_id, rcs_user_id, b_party, message_text){
+                console.log("Sending '" + message_text + ", on Chat: "+ chat_window + ", to " + b_party);
+                var message_id = Math.floor(Math.random()*10000000);
+                var status = "sent";
+                var timestamp = Date.now();
+                
+                var message = {"timestamp": timestamp, "message_id": message_id, "status": status};
+                messages.push(message);
+
+                var message_description = '{"message_id": "' + message_id + '", message_status": "' + status + '", "message_timestamp": "' + timestamp + '"}';
+                return message_description;
+            }
+            
+            function checkMessageStatus(messageId){
+                var output = null;
+                messages.forEach(element => {
+                    console.log(element.message_id);
+                    if(element.message_id == messageId){
+                        console.log(element.status)
+                        output = element.status;
+                    }
+                });
+                return output;
+            }
+
+            //console.log(sendMessage("chat_1", "+3467843253", "MSG1"));
+            //console.log(messages);
+            //console.log(messages[0].message_id);
+            //console.log(checkMessageStatus(messages[0].message_id));
+
+            console.log(write_chat_window("user_id", "rcs_profile_id", "chat_window_id", "user_b_id", "message_id", "sender", Date.now(), "message_text", "status_id", "sent", Date.now()));
+
+        </script>
+
+
+
+    </body>
+</html>
