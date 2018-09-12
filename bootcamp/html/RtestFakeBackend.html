@@ -8,9 +8,7 @@
         <!-- Database functions-->
         <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 
-        <script type="text/javascript">
-            console.log("Entering...");
-            
+        <script type="text/javascript">            
             var config = {
                 apiKey: "AIzaSyD3dPT-gwDrtBnvo9_DQwlRVFL2IQ05RzM",
                 authDomain: "rtesbootcamp.firebaseapp.com",
@@ -22,7 +20,7 @@
 
             // Initialize your Firebase app
             var fb = firebase.initializeApp(config);
-            console.log(fb);
+            //console.log(fb);
 
 
             /* DB table format
@@ -30,9 +28,18 @@
             */
                 
             //Read from chat_window
-                function read_chat_window(){
+            var chat_windows = {};
 
-                }
+            function read_chat_window(user_id, rcs_profile_id, chat_window_id){                
+                var chat_window_query = firebase.database().ref("chat_window/" + chat_window_id);
+                chat_window_query.on('value', function(snapshot) {
+                    snapshot.foreach(doc, function(element) {
+                        console.log(element.val);
+                    });
+                
+                });
+            }
+
             //write in chat_window
             function write_chat_window(user_id, rcs_profile_id, chat_window_id, user_b_id, message_id, sender, timestamp, message_text, status_id, value, update_timestamp){
                 
@@ -104,8 +111,9 @@
             //console.log(messages[0].message_id);
             //console.log(checkMessageStatus(messages[0].message_id));
 
-            console.log(write_chat_window("user_id", "rcs_profile_id", "chat_window_id", "user_b_id", "message_id", "sender", Date.now(), "message_text", "status_id", "sent", Date.now()));
-
+            //console.log(write_chat_window("user_id", "rcs_profile_id", "chat_window_id", "user_b_id", "message_id", "sender", Date.now(), "message_text", "status_id", "sent", Date.now()));
+            read_chat_window("user_id", "rcs_profile_id", "-LMCPl7r4Jj5t-dHNB2Y")
+            console.log(chat_windows);
         </script>
 
 
