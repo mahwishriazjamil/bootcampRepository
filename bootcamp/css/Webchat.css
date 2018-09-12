@@ -1,5 +1,5 @@
 body {
-    background-image: url("REDbackgroundforWebchat.jpg");
+    background-image: url("../html/img/webchat_background.jpg");
     opacity: 0.9;
 }
 .chatperson{
