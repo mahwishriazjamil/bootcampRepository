@@ -96,7 +96,7 @@ function toggleSignIn() {
   /**
    * Handles the sign up button press.
    */
-  function handleSignUp() {
+   function handleSignUp() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     //new stuff 
@@ -229,8 +229,8 @@ function toggleSignIn() {
   }
   
   function customSignUp(){
-    handleSignUp().then(function (){sendEmailVerification();} );
-    
+    handleSignUp();
+    document.getElementById("verify").disabled = false;
   }
 
   function testInput(email){
