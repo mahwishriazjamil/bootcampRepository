@@ -1,5 +1,5 @@
 <html lang="en"><head>
-  <title>Forgotten Password</title>
+  <title>Sign Up</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -58,7 +58,7 @@
       <h1>V-Message</h1>
 <img src="https://thumb.ibb.co/fGHxAU/vf_logo_large.png" alt="" width="72" height="72">
 
-      <hr><h1 class="h3 mb-3 font-weight-normal">Please enter your email</h1>
+      <hr><h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
 
 
       
@@ -68,9 +68,11 @@
   <form>
     <div class="form-group">
       <input type="text" class="form-control" name="email" id="email" placeholder="Enter email">
+      <input type="password" class="form-control" type="password" id="password" name="password" placeholder="Enter password">
+      <input type="password" class="form-control" type="rePassword" id="rePassword" name="rePassword" placeholder="Re-enter password">
     </div>
     <script src="./functions.js"></script><script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-    <button type="button" class="btn btn-default" onclick="myPasswordReset()">Send password reset</button>
+    <button type="button" class="btn btn-default" onclick="handleSignUp()">Send email verification</button>
     <button type="button" class="btn btn-default" onclick="window.location.href='./index.html'">Back to Sign In</button>
   </form>
 </div>  
@@ -79,17 +81,11 @@
   </div>
 </div>
 
-
-
-
 <script>
-window.onload = function(){
-  initializeFirebase();
-  //initReset();
-}
-
-
-</script>
-
-
-</body></html>
+    window.onload = function(){
+      initializeFirebase();
+     
+    }
+    
+    
+    </script>
