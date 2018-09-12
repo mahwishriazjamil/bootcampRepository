@@ -1,0 +1,60 @@
+<html lang="en">
+    <head>
+        
+    </head>
+    <body>
+        
+        
+        <!-- Database functions-->
+        <script type="text/javascript">
+        
+        /* DB table format
+         * user_id, rcs_profile_id, chat_window_id, user_b_id, messages { message_id, sender, timestamp, message_text, status { status_id, value, update_timestamp } }
+         */
+            
+        //Read from chat_window
+
+        //write in chat_window
+
+        </script>
+
+
+        <!-- RTES scpecific functions-->
+        <script type="text/javascript">
+            var messages = []; 
+
+            function sendMessage(user_id, rcs_user_id, b_party, message_text){
+                console.log("Sending '" + message_text + ", on Chat: "+ chat_window + ", to " + b_party);
+                var message_id = Math.floor(Math.random()*10000000);
+                var status = "sent";
+                var timestamp = Date.now();
+                
+                var message = {"timestamp": timestamp, "message_id": message_id, "status": status};
+                messages.push(message);
+
+                var message_description = '{"message_id": "' + message_id + '", message_status": "' + status + '", "message_timestamp": "' + timestamp + '"}';
+                return message_description;
+            }
+            
+            function checkMessageStatus(messageId){
+                var output = null;
+                messages.forEach(element => {
+                    console.log(element.message_id);
+                    if(element.message_id == messageId){
+                        console.log(element.status)
+                        output = element.status;
+                    }
+                });
+                return output;
+            }
+
+            console.log(sendMessage("chat_1", "+3467843253", "MSG1"));
+            console.log(messages);
+            console.log(messages[0].message_id);
+            console.log(checkMessageStatus(messages[0].message_id));
+        </script>
+
+
+
+    </body>
+</html>
