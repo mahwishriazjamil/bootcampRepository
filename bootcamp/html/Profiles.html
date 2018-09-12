@@ -26,9 +26,10 @@
         <a href="#" class="pull-right">Delete User</a>     
         <a href="#" class="pull-right">Edit User| </a> 
         <a href="./Create_RCS_User_Page.html" class="pull-right">Add User| </a>
+        
         <script>
 
-          document.write("<table border='1' width='1000'>")
+          document.write("<table width=700  class=\"table table-bordered\">");
           document.write("<tr><th>Firstname</th><th>Lastname</th><th>MSISDN</th><th>MCC</th><th>IMS</th></tr>");
   
           var Firstname   = ["January","February","March","April", "May", "a"];
@@ -41,10 +42,12 @@
             document.write("<tr><td>"  + Firstname[i] + "</td><td>" + Lastname[i]);
             document.write("</td><td>" + MSISDN[i]    + "</td><td>" + MCC[i] +"</td><td>"+ IMS[i] +"</td><tr>")
           }
-  
+          document.write("</table>")
         </script>
+
+        <button class="btn btn-default" onclick="signOut();">Sign Out</button>
+
         </div>
-      <button class="btn btn-default" onclick="signOut();">Sign Out</button>
     </body>
   </body>
 </html>
