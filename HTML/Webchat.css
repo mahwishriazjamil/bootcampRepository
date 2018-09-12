@@ -1,5 +1,5 @@
 body {
-    background-image: url("clean-2721103_1920.jpg");
+    background-image: url("test.jpg");
     opacity: 0.9;
 }
 .chatperson{
@@ -91,4 +91,7 @@ float: left;
 }
 #chatmenu{
     border-radius: 10px;
+}
+#headingtext{
+    color: white
 }
