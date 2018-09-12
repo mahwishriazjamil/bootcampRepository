@@ -35,28 +35,28 @@ function signOut(){
      }
 
 
-function sendMessage(input){
-messageJSON =sendNewMessage(input,getRecipent())
-return messageJSON;
-}
+// function sendMessage(input){
+// messageJSON =sendNewMessage(input,getRecipent())
+// return messageJSON;
+// }
 
 
-function getUser(){
-    //placeholder code.
-    return "Joshua"
-}
+// function getUser(){
+//     //placeholder code.
+//     return "Joshua"
+// }
 
-function getRecipent(){
-    //placeholder
-    return "Brandon"
-}
+// function getRecipent(){
+//     //placeholder
+//     return "Brandon"
+// }
 
-function sendNewMessage (input, newRecipient){
-var currentDate = new Date(),
-out = { user: getUser() , message: input, time: currentDate.getTime() ,recipient: newRecipient  }
-messageJSON = JSON.stringify(out);
-return messageJSON;
-}
+// function sendNewMessage (input, newRecipient){
+// var currentDate = new Date(),
+// out = { user: getUser() , message: input, time: currentDate.getTime() ,recipient: newRecipient  }
+// messageJSON = JSON.stringify(out);
+// return messageJSON;
+// }
 function toggleSignIn() {
     if (firebase.auth().currentUser) {
       // [START signout]
@@ -99,12 +99,19 @@ function toggleSignIn() {
   function handleSignUp() {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
+    //new stuff 
+    var rePassword = document.getElementById('rePassword').value;
     if (email.length < 4) {
       alert('Please enter an email address.');
       return;
     }
     if (password.length < 4) {
       alert('Please enter a password.');
+      return;
+    }
+    //new here
+    if (!(password===rePassword) ){
+      alert('Your passwords need to match');
       return;
     }
     // Sign in with email and pass.
@@ -173,7 +180,7 @@ function toggleSignIn() {
       //document.getElementById('quickstart-verify-email').disabled = true;
       //document.getElementById('quickstart-')
       // [END_EXCLUDE]
-      if (user) {
+      if (user && firebase.auth().currentUser.emailVerified) {
         // User is signed in. 
         window.location.href = "./Profiles.html" 
         var displayName = user.displayName;
@@ -224,3 +231,5 @@ function toggleSignIn() {
   function testInput(email){
       window.alert(email)
   }
+
+  
