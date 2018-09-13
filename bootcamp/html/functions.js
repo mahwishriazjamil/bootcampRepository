@@ -339,7 +339,18 @@ function toggleSignIn() {
   function testPush(){
     firebase.database().ref("RCS_Users/").push({
       "UID":"test"
-    })
+    }) 
   }
 
-  
+  function testDelete(profile_id){
+    var db = firebase.database();                   
+    var path = profile_id;
+    var survey=db.ref('RCS_Users'+'/');    //Eg path is company/employee                
+    survey.child(path).remove();
+    window.alert("Profile with id: "+profile_id+", has been deleted.")   
+  }
+
+  function testEdit(profile_id,catergory,newValue){
+    var db = firebase.database();
+    db.ref("RCS_Users/"+profile_id+"/"+catergory).set(newValue);
+  }
