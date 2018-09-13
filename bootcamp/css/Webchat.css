@@ -95,3 +95,11 @@ float: left;
 #headingtext{
     color: white
 }
+#glyphiconLink{
+    display: inline;
+}
+.glyphicon{
+    font-size: 30px;
+    color: white;
+    padding-right: 20px
+}

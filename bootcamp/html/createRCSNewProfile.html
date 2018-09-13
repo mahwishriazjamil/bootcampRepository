@@ -1,0 +1,88 @@
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../css/base.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src ="./functions.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>    
+  </head>
+  <script>
+      // Initialize Firebase
+      
+            window.onload= function(){
+            initializeFirebase();
+            //autoSignOut();
+            //testPush();
+            }
+      
+        </script> 
+  <body>
+      <div class="container text-center">
+          <h1 id="headingtext">V-Message</h1>
+          <img src="https://thumb.ibb.co/fGHxAU/vf_logo_large.png" alt="" width="72" height="72">
+          <br>
+          <button class="btn btn-default"id="float-right"  onclick="signOut();">Sign Out</button>  
+      </div>
+    <div class="container">
+      <h1>Create New RCS User</h1>
+      <h3>Please fill in fields below</h3>
+    <div class="row">
+            <div class= "col-md-12">
+                <div class= "col-md-6">
+                  <form id=recommendationForm>  
+                    <label for="Name">Name:</label>
+                    <input type="text" class="form-control" id="Name" placeholder="Enter Name">
+             
+                    <label for="MSISDN">MSISDN:</label>
+                    <input type="tel" class="form-control" id="MSISDN" placeholder="Enter MSISDN">
+              
+                    <label for="MCC">MCC:</label>
+                    <input type="number" class="form-control" id="MCC" placeholder="Enter MCC">
+              
+                    <label for="MNC">MNC:</label>
+                    <input type="number" class="form-control" id="MNC" placeholder="Enter MNC">
+             
+                    <label for="IMS-Domain">IMS-Domain:</label>
+                    <input type="text" class="form-control" id="IMS-Domain" placeholder="Enter IMS-Domain">
+              
+                   <label for="Realm">Realm:</label>
+                   <input type="text" class="form-control" id="Realm" placeholder="Enter Realm">
+                
+                   <label for="IMS-Password">IMS-Password:</label>
+                   <input type="text" class="form-control" id="IMS-Password" placeholder="Enter IMS-Password">
+              </div>
+              <div class= "col-md-6">
+                <label for="IMS-Username">IMS-Username:</label>
+                <input type="text" class="form-control" id="IMS-Username" placeholder="Enter IMS-Password">
+                  
+                <label for="GrCh Conference-URI">GrCh Conference-URI:</label>
+                <input type="text" class="form-control" id="GrCh-Conference-URI" placeholder="Enter GrCh Conference-URI">
+               
+                <label for="File Transfer HTTP-URL">File Transfer HTTP-URL:</label>
+                <input type="text" class="form-control" id="File-Transfer-HTTP-URL" placeholder="Enter File Transfer URL">
+               
+                <label for="File Transfer Alias">File Transfer Alias:</label>
+                <input type="text" class="form-control" id="File-Transfer-Alias" placeholder="Enter File Transfer Alias">
+               
+                <label for="File Transfer Token">File Transfer Token:</label>
+                <input type="text" class="form-control" id="File-Transfer-Token" placeholder="Enter File Transfer Token">
+               
+                <label for="Server FQDN/IP">Server FQDN/IP:</label>
+                <input type="text" class="form-control" id="Server-IP" placeholder="Enter File Transfer FQDN/IP">
+              
+                <label for="Server TCP Port">Server TCP Port:</label>
+                <input type="text" class="form-control" id="Server-TCP-Port" placeholder="Enter Server TCP Port">
+               </div>
+              </div>
+             </div>
+              <script src="./functions.js"></script><script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+              <button type="button" id="float-right" class="btn btn-default" onclick="customPush()">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
+
+    
