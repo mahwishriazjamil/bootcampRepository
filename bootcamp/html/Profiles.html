@@ -14,6 +14,19 @@
     <script src ="./functions.js"></script>
 
     <script>  
+      var config = {
+        apiKey: "AIzaSyD3dPT-gwDrtBnvo9_DQwlRVFL2IQ05RzM",
+        authDomain: "rtesbootcamp.firebaseapp.com",
+        databaseURL: "https://rtesbootcamp.firebaseio.com",
+        projectId: "rtesbootcamp",
+        storageBucket: "rtesbootcamp.appspot.com",
+        messagingSenderId: "623287477132"
+      };
+
+    // Initialize your Firebase app
+    firebase.initializeApp(config);
+    console.log()
+
     //Initialize Firebase
     //window.onload= function(){
     //initializeFirebase();
@@ -28,9 +41,8 @@
         <a href="./createRCSNewUser.html" class="pull-right">Add User| </a>
         
         <script>
-          //firebase.database().ref('RCS_Users/').once('WeMuLeKoZmMnWBU5irdf', function(snap){
-          //console.log(JSON.stringify(snap.val()))
-          //})
+          firebase.database().ref('RCS_Users/').once('WeMuLeKoZmMnWBU5irdf', function(snap){
+          console.log(JSON.stringify(snap.val()))})
 
           document.write("<table width=700  class=\"table table-bordered\">");
           document.write("<tr><th>Firstname</th><th>Lastname</th><th>MSISDN</th><th>MCC</th><th>IMS</th></tr>");
