@@ -314,9 +314,9 @@ function toggleSignIn() {
   
     var agendaEntryId = firebase.database().ref().child("rcs_user_agenda/").push().key;
     
-    var name = document.getElementById('Name').value;
-    var msisdn = document.getElementById('MSISDN').value;
-    var profile_id = "placeholder";
+    var name = document.getElementById('name').value;
+    var msisdn = document.getElementById('msisdn').value;
+    var profile_id = "placeholder";//pass profile id in here.
     var unique_id = firebase.auth().currentUser.uid;
     
     
@@ -324,17 +324,18 @@ function toggleSignIn() {
       var runtime = {
       "contact_name": name,
       "contact_msisdn":msisdn,
-      
+      "rcs_profile_id":profile_id,
       "user_id":unique_id,
       "agenda_entry_id":agendaEntryId
     }//)
     var updates = {};
-       updates['RCS_Users/' + unique_key ] = runtime;
+       updates['rcs_user_agenda/' + agendaEntryId ] = runtime;
     
         
     firebase.database().ref().update(updates); 
-    window.alert("RCS Profile created"); 
+    window.alert("New user added"); 
     }
+
   function testPush(){
     firebase.database().ref("RCS_Users/").push({
       "UID":"test"
