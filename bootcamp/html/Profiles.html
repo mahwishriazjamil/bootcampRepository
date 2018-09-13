@@ -29,15 +29,17 @@
         var MCC         = ["January","February","March","April", "May", "d"];
         var IMS         = ["January","February","March","April", "May", "e"]; 
 
-        firebase.database().ref('RCS_Users/').once('value', function one(snap) {
+            var data_1 = [];
 
-          snap.forEach( function two(childNodes) {
-            var data  = JSON.parse(JSON.stringify(childNodes.val()))
-            console.log(data)
+        firebase.database().ref('RCS_Users/').once('value', function(snap) {
+
+          snap.forEach( function(childNodes) {
+            data_1.push(JSON.parse(JSON.stringify(childNodes.val())));
+        
           });
-
+          console.log(data_1);
         });
-
+        
         /*  for (key in data) { var i = 1
           Firstname[i] = data[key];
           Lastname[i]  = data[key];
