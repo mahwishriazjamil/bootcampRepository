@@ -5,12 +5,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
     <script src ="./functions.js"></script>
-
-    <div class="container">
+</head>
+<body>
+    <div class="container text-center">
+        <h1 id="headingtext">V-Message</h1>
+        <img src="https://thumb.ibb.co/fGHxAU/vf_logo_large.png" alt="" width="72" height="72">
+        <br>
+        <br>
+      <button class="btn btn-default"id="float-right"  onclick="signOut();">Sign Out</button>  
+    </div>
+      <div class="container" id="divtocheck">
       <h2>Profiles</h2>
         <p>This is a list of profiles which have been been created...</p>    
         <a href="#" class="pull-right">Delete User</a>     
@@ -49,7 +58,7 @@
            i = i + 1;
         } */
 
-          document.write("<table width=700  class=\"table table-bordered\">");
+          document.write("<table width=700  class=\"table table-bordered\" id=\"profiletable\">");
           document.write("<tr><th>Firstname</th><th>Lastname</th><th>MSISDN</th><th>MCC</th><th>IMS</th></tr>");
   
           for(var i=0; i<MSISDN.length; i++) {
@@ -59,9 +68,7 @@
           document.write("</table>")
         </script>
 
-        <button class="btn btn-default" onclick="signOut();">Sign Out</button>
-
-        </div>
+          </div>
     </body>
   </body>
 </html>
