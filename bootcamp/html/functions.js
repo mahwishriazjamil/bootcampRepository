@@ -36,6 +36,14 @@ function signOut(){
     else{}
   }
 
+  function testPull(uid){
+    var ref = firebase.database().ref("rcs_user_agenda");
+    ref.orderByChild("user_id").equalTo(uid).on("child_added", function(snapshot) {
+
+    console.log(snapshot.key)
+    console.log(snapshot)
+    ;});
+  }
 
 // function sendMessage(input){
 // messageJSON =sendNewMessage(input,getRecipent())
