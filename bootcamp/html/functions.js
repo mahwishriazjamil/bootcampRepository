@@ -247,7 +247,9 @@ function toggleSignIn() {
   }
 
   function customPush() {
-
+  
+  var unique_key = firebase.database().ref().child("RCS_Users/").push().key;
+  
   var name = document.getElementById('Name').value;
   var msisdn = document.getElementById('MSISDN').value;
   var mcc = document.getElementById('MCC').value;
@@ -263,7 +265,10 @@ function toggleSignIn() {
   var server_tcp_port= document.getElementById('Server-TCP-Port').value;
   var ims_username = document.getElementById('IMS-Username').value;
   var unique_id = firebase.auth().currentUser.uid;
-  firebase.database().ref("RCS_Users/").push({
+  
+  
+  //firebase.database().ref("RCS_Users/").push(
+    var runtime = {
     "name": name,
     "msisdn":msisdn,
     "mcc":mcc,
@@ -278,8 +283,14 @@ function toggleSignIn() {
     "file_transfer_token":file_transfer_token,
     "server_port":server_tcp_port,
     "ims_username":ims_username,
-    "UID":unique_id
-  })
+    "UID":unique_id,
+    "Profile_Id":unique_key
+  }//)
+  var updates = {};
+     updates['RCS_Users/' + unique_key ] = runtime;
+  
+  return firebase.database().ref().update(updates); 
+
   }
   function testPush(){
     firebase.database().ref("RCS_Users/").push({
