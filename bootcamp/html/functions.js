@@ -289,9 +289,9 @@ function toggleSignIn() {
   var updates = {};
      updates['RCS_Users/' + unique_key ] = runtime;
   
-  window.alert("RCS Profile created");     
-  return firebase.database().ref().update(updates); 
-
+      
+  firebase.database().ref().update(updates); 
+  window.alert("RCS Profile created"); 
   }
   function testPush(){
     firebase.database().ref("RCS_Users/").push({
