@@ -7,7 +7,18 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-
+	
+	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+		<script src="RtesFakeBackend.js"></script>
+		<script type="text/javascript"> 
+			var app = angular.module("myApp", []);
+			app.controller("myCtrl", function($scope) {
+				read_agenda_contacts('LKIA1uhgKqWLj9yKczhPXSu9o8v2', '1235gffsutee45');
+			});
+			console.log(agenda_entries);
+		</script>
+	
+	
 		<style>
 		
 		img {
@@ -46,17 +57,9 @@
 	<img src="https://thumb.ibb.co/fGHxAU/vf_logo_large.png" alt="" width="72" height="72">
 
 
-	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
-		<script src="RtesFakeBackend.js"></script>
-		<script type="text/javascript"> 
-			var app = angular.module("myApp", []);
-			app.controller("myCtrl", function($scope) {
-				$scope.records = read_agenda_contacts('user_id', 'rcs_profile_id');
-			});
-
-		</script>
+	
 	<div class="container" ng-app="myApp"ng-controller="myCtrl">
-		<div class="row"  ng-repeat="agenda_entry in records" style="border:10px gray">
+		<div class="row"  ng-repeat="agenda_entry in agenda_entries" style="border:10px gray">
 			<div class="col-sm">
 				<img src="https://thumb.ibb.co/fO6ps9/514623738_612x612.jpg" alt="Louanne Gervais">
 			</div>
