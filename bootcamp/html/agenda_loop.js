@@ -1,4 +1,4 @@
-// TODO: Replace with your project's config object. You can find this
+8// TODO: Replace with your project's config object. You can find this
 // by navigating to your project's console overview page
 // (https://console.firebase.google.com/project/your-project-id/overview)
 // and clicking "Add Firebase to your web app"
@@ -28,29 +28,29 @@ console.log()
 //function errData(err){
   //  console.log('Error!');
 //}
-firebase.database().ref("RCS_Users/").on('value', function(snap){
+firebase.database().ref("rcs_user_agenda/").on('value', function(snap){
 
     snap.forEach(function(childNodes){
+    
  
        //This loop iterates over children of user_id
        //childNodes.key is key of the children of userid such as (20170710)
-       var name = childNodes.val().name;
-       var msisdn = childNodes.val().msisdn;
+       var user = childNodes.val().user_id;
+       var rcs_profile = childNodes.val().rcs_profile_id;
+       var contact_name = childNodes.val().contact_name;
+       var contact_msisdn = childNodes.val().contact_msisdn;
 
-       data = {name, msisdn};
+       data = {user, rcs_profile,contact_name,contact_msisdn};
 
-      
 
 
        console.log(data)
-       
-     
- 
+
  
    });
  });
 
-
+//console.log(data)
 
 
 
