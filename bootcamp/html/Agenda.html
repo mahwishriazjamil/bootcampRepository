@@ -11,12 +11,7 @@
 	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
 		<script src="RtesFakeBackend.js"></script>
 		<script type="text/javascript"> 
-			var app = angular.module('myApp', []);
-			app.controller('myCtrl', function($scope) {
-				refresh('LKIA1uhgKqWLj9yKczhPXSu9o8v2', '1235gffsutee45');
-				$scope.var = agenda_entries2;
-			});
-
+			read_agenda_contacts('LKIA1uhgKqWLj9yKczhPXSu9o8v2', '1235gffsutee45');
 		</script>
 	
 	
@@ -59,8 +54,12 @@
 
 
 	
-	<div class="container" ng-app="myApp" ng-controller="myCtrl">
-		<div ng-repeat="agenda_entry in var" class="row" style="border:10px gray">
+	<div class="container" id="table_body">
+		
+	</div>
+
+	<!--
+		<div class="row" style="border:10px gray">
 			<div class="col-sm">
 				<img src="https://thumb.ibb.co/fO6ps9/514623738_612x612.jpg" alt="Louanne Gervais">
 			</div>
@@ -77,7 +76,7 @@
 		</div>
 		
 	</div>
-
+-->
 <div>
 	<br>
     <div class="col-sm">
