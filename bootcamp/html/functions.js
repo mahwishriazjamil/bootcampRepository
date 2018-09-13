@@ -45,6 +45,14 @@ function signOut(){
     ;});
   }
 
+  function newTestPull(){
+    var app = angular.module("myApp", []);
+			app.controller("myCtrl", function($scope) {
+				read_agenda_contacts('LKIA1uhgKqWLj9yKczhPXSu9o8v2', '1235gffsutee45');
+			});
+			console.log(agenda_entries);
+  }
+
 // function sendMessage(input){
 // messageJSON =sendNewMessage(input,getRecipent())
 // return messageJSON;
@@ -301,6 +309,32 @@ function toggleSignIn() {
   firebase.database().ref().update(updates); 
   window.alert("RCS Profile created"); 
   }
+
+  function customContactPush() {
+  
+    var agendaEntryId = firebase.database().ref().child("rcs_user_agenda/").push().key;
+    
+    var name = document.getElementById('Name').value;
+    var msisdn = document.getElementById('MSISDN').value;
+    var profile_id = "placeholder";
+    var unique_id = firebase.auth().currentUser.uid;
+    
+    
+    //firebase.database().ref("RCS_Users/").push(
+      var runtime = {
+      "contact_name": name,
+      "contact_msisdn":msisdn,
+      
+      "user_id":unique_id,
+      "agenda_entry_id":agendaEntryId
+    }//)
+    var updates = {};
+       updates['RCS_Users/' + unique_key ] = runtime;
+    
+        
+    firebase.database().ref().update(updates); 
+    window.alert("RCS Profile created"); 
+    }
   function testPush(){
     firebase.database().ref("RCS_Users/").push({
       "UID":"test"
