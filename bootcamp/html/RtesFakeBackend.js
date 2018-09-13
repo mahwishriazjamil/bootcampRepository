@@ -12,9 +12,10 @@
             };
 
             // Initialize your Firebase app
-            var fb = firebase.initializeApp(config);
-            //console.log(fb);
-
+            firebase.initializeApp(config);
+			 
+			// Get a reference to the database service
+			var database = firebase.database();
 
             /* DB table format
             // user_id, rcs_profile_id, chat_window_id, user_b_id, messages { message_id, sender, timestamp, message_text, status { status_id, value, update_timestamp } }
@@ -24,20 +25,17 @@
             var chat_windows = {};
 
             function read_chat_window(user_id, rcs_profile_id, chat_window_id){                
-                var chat_window_query = firebase.database().ref("chat_window/" + chat_window_id);
+                var chat_window_query = database.ref("chat_window/" + chat_window_id);
                 chat_window_query.on('value', function(snapshot) {
-                    snapshot.foreach(doc, function(element) {
-                        console.log(element.val);
+                        console.log(snapshot);
                     });
-                
-                });
             }
 
             //write in chat_window
             function write_chat_window(user_id, rcs_profile_id, chat_window_id, user_b_id, message_id, sender, timestamp, message_text, status_id, value, update_timestamp){
                 
                 // Get a key for a new Post.
-                var newPostKey = firebase.database().ref().child("chat_window/").push().key;
+                var newPostKey = database.ref().child("chat_window/").push().key;
 
 
                 // A post entry.
@@ -64,11 +62,22 @@
                 var updates = {};
                 updates['/chat_window/' + newPostKey] = postData;
                 
-                return firebase.database().ref().update(updates);
+                return database.ref().update(updates);
             }
-            
-            function read_agenda_contacts(user_id, rcs_profile_id){                
-                var fake_agenda = [
+			
+            var agenda_entries = [];
+			
+            function read_agenda_contacts(user_id, rcs_profile_id){               
+                var query = database.ref("rcs_user_agenda").orderByChild("user_id").equalTo(user_id).on('value', function(snapshot) {
+						snapshot.forEach(function(data){
+							agenda_entries.push({"contact_name": data.val().contact_name, "contact_msisdn": data.val().contact_msisdn});
+						});
+                    });
+				return agenda_entries;
+            }
+
+			/*
+				var fake_agenda = [
                     {
                         "agenda_entry_id": "-LMD6rXJxMuw0AjXbE77",
                         "contact_msisdn": "+4964534324412",
@@ -87,14 +96,15 @@
 
                 return fake_agenda;
             }
-
+			*/
+			
             //write in chat_window
             function write_agenda_contact(user_id, rcs_profile_id, agenda_entry_id, contact_name, contact_msisdn){
                 
                 if(agenda_entry_id == null){
                     // Get a key for a new Post.
                     console.log("New Agenda Entry");
-                    agenda_entry_id = firebase.database().ref().child("rcs_user_agenda/").push().key;
+                    agenda_entry_id = database.ref().child("rcs_user_agenda/").push().key;
                 }
                 // A post entry.
                 var postData = {
@@ -110,7 +120,7 @@
                 var updates = {};
                 updates['/rcs_user_agenda/' + agenda_entry_id] = postData;
                 
-                return firebase.database().ref().update(updates);
+                return database.ref().update(updates);
             }
 
             var messages = []; 
