@@ -1,21 +1,42 @@
 <html>
   <head>
-	  <script src="bootstrap.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link href="../CSS/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	  <link rel="stylesheet" href="../css/webchat.css">
+    <link rel="stylesheet" href="../css/webchat.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head> 
+  <body>
   <section>
-    <div class="container-fluid text-center">
+    <div class="container text-center">
       <h1 id="headingtext">V-Message</h1>
       <img src="https://thumb.ibb.co/fGHxAU/vf_logo_large.png" alt="" width="72" height="72">
       <br>
-      <br>
+      <div class="text-left">
+          <p id="glyphiconLink">
+              <a href="profiles.html" id="glyphiconLink">
+                <span class="glyphicon glyphicon-user"></span>
+              </a>  
+        <p id="glyphiconLink">
+              <a href="agenda.html" >
+                <span class="glyphicon glyphicon-tasks"></span>
+              </a>
+            </p> 
+        <p id="glyphiconLink">
+            <a href="settings.html" id="glyphiconLink">
+              <span class="glyphicon glyphicon-cog"></span>
+            </a>
+
+        </div>
       <div class="row">
+
         <script>
           document.write("<div class=\"card col-md -4\" id=\"chatmenu\"  style=\"overflow:scroll;\">")
           document.write("<ul class=\"list-group list-group-flush\" style=\"height: 70%;\">")
 
-          for(var i=0; i<4; i++) {
+          for(var i=0; i<3; i++) {
             document.write("<li class=\"list-group-item\">")
             document.write("<div class=\"\">")
             document.write("<img src=\"img/avatar.png\" alt=\"Avatar\" class=\"avatar\" id=\"icons\"> ")
@@ -29,8 +50,20 @@
             document.write("</li>")
           }
           document.write("</ul>")  
-        </script> 
-      </div>
+        
+          
+      function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+          document.getElementById("main").style.marginLeft = "250px";
+      }
+      
+      function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+          document.getElementById("main").style.marginLeft= "0";
+      }
+      </script>
+
+             </div>
 
     <div class="col-md-8">
       <div class="chatbody"></div>
@@ -43,7 +76,7 @@
       </div>
     </div>
   </section>
+
+      </body>
 </html>
-
-
 
