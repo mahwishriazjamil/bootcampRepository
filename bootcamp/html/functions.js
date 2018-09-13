@@ -19,20 +19,22 @@ function signOut(){
 
  function autoSignOut(){
      firebase.auth().onAuthStateChanged(function(user) {
-         // [START_EXCLUDE silent]
-         //document.getElementById('quickstart-verify-email').disabled = true;     
-         // [END_EXCLUDE]
+        
          if (!user) {
            // User is signed out
-           
-          window.location.href = "./index.html"
+            window.location.href = "./index.html"
           } 
-         // [START_EXCLUDE silent]
-         document.getElementById('quickstart-sign-in').disabled = false;
-         // [END_EXCLUDE]
+        
        });
      
      }
+
+  function newSignOut(){
+    if (firebase.auth().currentUser == null){
+      signOut();
+    }
+    else{}
+  }
 
 
 // function sendMessage(input){
@@ -235,6 +237,65 @@ function toggleSignIn() {
 
   function testInput(email){
       window.alert(email)
+  }
+
+  function getUID(){
+    firebase.auth().onAuthStateChanged( user => {
+      if (user) { this.userId = user.uid }
+    });
+    return userId;
+  }
+
+  function customPush() {
+  
+  var unique_key = firebase.database().ref().child("RCS_Users/").push().key;
+  
+  var name = document.getElementById('Name').value;
+  var msisdn = document.getElementById('MSISDN').value;
+  var mcc = document.getElementById('MCC').value;
+  var mnc = document.getElementById('MNC').value;
+  var ims_domain =document.getElementById('IMS-Domain').value;
+  var realm = document.getElementById('Realm').value;
+  var ims_password = document.getElementById('IMS-Password').value;
+  var grch_uri = document.getElementById('GrCh-Conference-URI').value;
+  var file_transfer_http_url = document.getElementById('File-Transfer-HTTP-URL').value;
+  var file_transfer_alias= document.getElementById('File-Transfer-Alias').value;
+  var server_ip = document.getElementById('Server-IP').value;
+  var file_transfer_token = document.getElementById('File-Transfer-Token').value;
+  var server_tcp_port= document.getElementById('Server-TCP-Port').value;
+  var ims_username = document.getElementById('IMS-Username').value;
+  var unique_id = firebase.auth().currentUser.uid;
+  
+  
+  //firebase.database().ref("RCS_Users/").push(
+    var runtime = {
+    "name": name,
+    "msisdn":msisdn,
+    "mcc":mcc,
+    "mnc":mnc,
+    "ims_domain":ims_domain,
+    "realm":realm,
+    "ims_password":ims_password,
+    "grch_uri":grch_uri,
+    "file_transfer_http_url":file_transfer_http_url,
+    "file_transfer_aias":file_transfer_alias,
+    "server_ip":server_ip,
+    "file_transfer_token":file_transfer_token,
+    "server_port":server_tcp_port,
+    "ims_username":ims_username,
+    "UID":unique_id,
+    "Profile_Id":unique_key
+  }//)
+  var updates = {};
+     updates['RCS_Users/' + unique_key ] = runtime;
+  
+  return firebase.database().ref().update(updates); 
+
+  }
+  function testPush(){
+    firebase.database().ref("RCS_Users/").push({
+      "UID":"test"
+    })
   }
 
   
