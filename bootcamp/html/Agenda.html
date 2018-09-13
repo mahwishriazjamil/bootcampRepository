@@ -14,8 +14,8 @@
 			var app = angular.module("myApp", []);
 			app.controller("myCtrl", function($scope) {
 				read_agenda_contacts('LKIA1uhgKqWLj9yKczhPXSu9o8v2', '1235gffsutee45');
+				$scope.name = agenda_entries;
 			});
-			console.log(agenda_entries);
 		</script>
 	
 	
@@ -58,8 +58,8 @@
 
 
 	
-	<div class="container" ng-app="myApp"ng-controller="myCtrl">
-		<div class="row"  ng-repeat="agenda_entry in agenda_entries" style="border:10px gray">
+	<div class="container" ng-app="myApp" ng-controller="myCtrl">
+		<div class="row"  ng-repeat="agenda_entry in name" style="border:10px gray">
 			<div class="col-sm">
 				<img src="https://thumb.ibb.co/fO6ps9/514623738_612x612.jpg" alt="Louanne Gervais">
 			</div>

@@ -1,7 +1,4 @@
 
-        
-
-       
             var config = {
                 apiKey: "AIzaSyD3dPT-gwDrtBnvo9_DQwlRVFL2IQ05RzM",
                 authDomain: "rtesbootcamp.firebaseapp.com",
@@ -65,17 +62,49 @@
                 return database.ref().update(updates);
             }
 			
-            var agenda_entries = [];
+            var agenda_entries = [
+                    {
+                        "agenda_entry_id": "-LMD6rXJxMuw0AjXbE77",
+                        "contact_msisdn": "+4964534324412",
+                        "contact_name": "Test_1 VF-DE",
+                        "rcs_profile_id": "1235gffsutee45",
+                        "user_id": "LKIA1uhgKqWLj9yKczhPXSu9o8v2"
+                    },
+                    {
+                        "agenda_entry_id": "-LMD7Cs1zNiChPCKbp0Y",
+                        "contact_msisdn": "+4964534324412",
+                        "contact_name": "Test_2 VF-DE",
+                        "rcs_profile_id": "1235gffsutee45",
+                        "user_id": "LKIA1uhgKqWLj9yKczhPXSu9o8v2"
+                    }
+                ];
+				
+			var agenda_entries = [
+                    {
+                        "agenda_entry_id": "-LMD6rXJxMuw0AjXbE77",
+                        "contact_msisdn": "+4964534324412",
+                        "contact_name": "Test_1 VF-DE",
+                        "rcs_profile_id": "1235gffsutee45",
+                        "user_id": "LKIA1uhgKqWLj9yKczhPXSu9o8v2"
+                    },
+                    {
+                        "agenda_entry_id": "-LMD7Cs1zNiChPCKbp0Y",
+                        "contact_msisdn": "+4964534324412",
+                        "contact_name": "Test_2 VF-DE",
+                        "rcs_profile_id": "1235gffsutee45",
+                        "user_id": "LKIA1uhgKqWLj9yKczhPXSu9o8v2"
+                    }
+                ];
 			
-            function read_agenda_contacts(user_id, rcs_profile_id){               
-                var query = database.ref("rcs_user_agenda").orderByChild("user_id").equalTo(user_id).on('value', function(snapshot) {
-						snapshot.forEach(function(data){
-							agenda_entries.push({"contact_name": data.val().contact_name, "contact_msisdn": data.val().contact_msisdn});
+			function read_agenda_contacts(user_id, rcs_profile_id){
+				var query = database.ref("rcs_user_agenda").orderByChild("user_id").equalTo(user_id).on('value', function(snapshot) {
+					snapshot.forEach(function(data){
+						agenda_entries.push({"contact_name": data.val().contact_name, "contact_msisdn": data.val().contact_msisdn});
 						});
-                    });
-				return agenda_entries;
-            }
-
+					console.log(agenda_entries);
+			    });
+					
+		
 			/*
 				var fake_agenda = [
                     {
@@ -95,8 +124,9 @@
                 ];
 
                 return fake_agenda;
-            }
 			*/
+            }
+
 			
             //write in chat_window
             function write_agenda_contact(user_id, rcs_profile_id, agenda_entry_id, contact_name, contact_msisdn){
