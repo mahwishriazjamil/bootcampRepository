@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="js" href="new3.js">
   </head> 
   <body>
   <section>
@@ -33,14 +34,33 @@
       <div class="row">
 
         <script>
-          document.write("<div class=\"card col-md -4\" id=\"chatmenu\"  style=\"overflow:scroll;\">")
+          
+          var count = 0;
+
+var chatNotifications = document.body;
+
+function changeChatNotifications() {
+count++;
+var NewChatNotifications = '(' + count + ') ' + chatNotifications;
+document.body = NewChatNotifications;
+}
+
+function newUpdate() {
+  update = setInterval(changeChatNotifications, 2000);
+}
+          var docBody = document.getElementById('jsid');
+          document.write = newUpdate;
+
+
+          document.write("<div class=\"card col-md-4 col-4\" id=\"chatmenu\"  style=\"overflow:scroll;\">")
           document.write("<ul class=\"list-group list-group-flush\" style=\"height: 70%;\">")
 
           for(var i=0; i<3; i++) {
-            document.write("<li class=\"list-group-item\">")
+            document.write("<li class=\"list-group-item\" id=\"jsid\">")
             document.write("<div class=\"\">")
             document.write("<img src=\"img/avatar.png\" alt=\"Avatar\" class=\"avatar\" id=\"icons\"> ")
             document.write("<h5 class=\"mb-1\">Name</h5>")
+            document.write(newUpdate)
             document.write("</div>")
             document.write("<br>")
             document.write("<br>")
@@ -65,13 +85,13 @@
 
              </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8 col-8">
       <div class="chatbody"></div>
-        <div class="col-md-12" id="Messages">
+        <div class="col-md-12 col-12" id="Messages">
           <div class="row">
-            <input  class="col-md-10 form-control" id="newid" type="text" placeholder="Message..." [(ngModel)]="message"  />
-            <button class="col-md-2 btn btn-danger btn-block"(click)="">Send</button>
-          </div>
+            <input  class="col-md-10 col-7 form-control" id="newid" type="text" placeholder="Message..." [(ngModel)]="message"  />
+            <button class="col-md-2 col-2 btn btn-danger"(click)="" id="sendmessagebutton">Send</button>
+          </div>  
         </div>
       </div>
     </div>

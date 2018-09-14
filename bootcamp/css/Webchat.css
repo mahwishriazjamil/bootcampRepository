@@ -103,3 +103,11 @@ float: left;
     color: white;
     padding-right: 20px
 }
+@media (max-width: 415px) {
+    #sendmessagebutton {
+        padding-right: 46px!important;
+    }
+    #lastMessage {
+        display: none;
+    }
+}
