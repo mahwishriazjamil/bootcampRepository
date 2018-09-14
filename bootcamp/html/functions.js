@@ -200,7 +200,7 @@ function toggleSignIn() {
       // [END_EXCLUDE]
       if (user && firebase.auth().currentUser.emailVerified) {
         // User is signed in. 
-        window.location.href = "./Profiles.html" 
+        window.location.href ="./profilesV2.html"// "./Profiles.html" 
         var displayName = user.displayName;
         var email = user.email;
         var emailVerified = user.emailVerified;
