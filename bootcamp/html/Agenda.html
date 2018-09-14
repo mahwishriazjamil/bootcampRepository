@@ -29,7 +29,8 @@ var url_string = window.location.href;
 		firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
 			// User is signed in.
-			read_agenda_contacts(c) //
+			read_agenda_contacts(c)
+			create(); //
          } else {
 			// No user is signed in.
 			signOut();
@@ -79,12 +80,12 @@ var url_string = window.location.href;
 	<div class="container" id="table_body">
 		
 	</div>
-
+    <div class="container" id="newButton">
+		
+	</div>
 <div>
 	<br>
-    <div class="col-sm">
-			<button type="button" class="btn btn-light"><a href="newContact.html">Add Contact</a></button>
-	</div>
+    
 </div>
 
 

@@ -310,13 +310,13 @@ function toggleSignIn() {
   window.alert("RCS Profile created"); 
   }
 
-  function customContactPush() {
+  function customContactPush(profid) {
   
     var agendaEntryId = firebase.database().ref().child("rcs_user_agenda/").push().key;
     
     var name = document.getElementById('name').value;
     var msisdn = document.getElementById('msisdn').value;
-    var profile_id = "placeholder";//pass profile id in here.
+    var profile_id =profid// "placeholder";//pass profile id in here.
     var unique_id = firebase.auth().currentUser.uid;
     
     
@@ -418,10 +418,13 @@ query.on('child_removed', function(data) {
 }	
 
 function create(){
-  var p = "12rfdfdf";
-  console.log("property p: " + p);
-  var c = $("#myid").replaceWith("<a href='pageB.html?Parameter1=" + p + "'>link</a>");
-  console.log(c);
-  $("#myid").append("<a href='pageB.html?Parameter1=p' >link</a>");
-  console.log("here");
-}
+  
+  $("#newButton").append(
+   
+        " <div class='col-sm'>" +
+            "<button type='button' class='btn btn-light'><a href='newContact.html?Profile_ID="+c+"'>New Conctact</a></button>" +
+           
+        "</div>" 
+    
+);
+  ;}
