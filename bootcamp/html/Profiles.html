@@ -20,13 +20,7 @@
       <button class="btn btn-default"id="float-right"  onclick="signOut();">Sign Out</button>  
     </div>
     <div class="container" id="divtocheck">
-      <h2>Profiles</h2>
-      
-      <!-- <p>This is a list of profiles which have been been created...</p>       
-      <a href="#" class="pull-right">Edit User| </a>  -->
-      
-      <a href="./createRCSNewProfile.html" class="pull-right">Add Profile| </a>
-        
+      <h2>Profiles</h2>   
       <p>This is a list of profiles which have been been created...</p>  
       <a href="webchat.html" class="pull-left"><span class="glyphicon glyphicon-phone"></span>
       </a>
@@ -82,8 +76,7 @@
   
           for(var i=0; i<MSISDN.length; i++) {
             document.write("<tr><td>"  + Firstname[i] + "</td><td>" + Lastname[i])
-            document.write("</td><td>" + MSISDN[i]    + "</td><td>" + MCC[i] +"</td><td>"+ IMS[i] + "</td><tr>" )
-              //+"</td><td>"+ "<a href=\"#\"><span class=\"glyphicon glyphicon-trash\"></span><\a>" + 
+            document.write("</td><td>" + MSISDN[i]    + "</td><td>" + MCC[i] +"</td><td>"+ IMS[i] +"</td><td>"+ "<a href=\"#\"><span class=\"glyphicon glyphicon-trash\"></span><\a>" + "</td><tr>" )
           }
           document.write("</table>")
         </script>
