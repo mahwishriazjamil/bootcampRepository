@@ -1,5 +1,10 @@
 <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script><script src ="functions.js"></script>
-
+<script type = "text/javascript">
+var url_string = window.location.href;
+            var url = new URL(url_string);
+			var c = url.searchParams.get("Profile_ID");
+			console.log(c)
+			</script>
 <html lang="en"><head>
   <title>Agenda</title>
 	<meta charset="utf-8">
@@ -24,7 +29,7 @@
 		firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
 			// User is signed in.
-			read_agenda_contacts('1235gffsutee45') //
+			read_agenda_contacts(c) //
          } else {
 			// No user is signed in.
 			signOut();

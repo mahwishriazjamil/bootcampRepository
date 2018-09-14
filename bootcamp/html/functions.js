@@ -376,8 +376,8 @@ $("#table_body").append(
                     "<p id='number'>"+msisdn+"</p>" +
                     "</div>" + 
             " <div class='col-sm'>" +
-                "<button type='button' class='btn btn-light'><a href='Webchat1.html'>Chat</a></button>" +
-                "<button type='button' class='btn btn-light'><a href='editContact.html'>Edit Contact</a></button>" +
+                "<button type='button' class='btn btn-light'><a href='Agenda.html?Profile_ID="+key+"'>Contacts</a></button>" +
+                "<button type='button' class='btn btn-light'><a href='editRCSProfile.html'>Edit Profile</a></button>" +
             "</div>" +
         "</div>"
     );
@@ -400,8 +400,8 @@ $("#"+key).replaceWith(
                 "<p id='number'>"+msisdn+"</p>" +
             "</div>" + 
             " <div class='col-sm'>" +
-                "<button type='button' class='btn btn-light'><a href='Webchat1.html'>Chat</a></button>" +
-                "<button type='button' class='btn btn-light'><a href='editContact.html'>Edit Contact</a></button>" +
+            "<button type='button' class='btn btn-light'><a href='Agenda.html'>Contacts</a></button>" +
+            "<button type='button' class='btn btn-light'><a href='editRCSProfile.html'>Edit Profile</a></button>" +
             "</div>" +
         "</div>"
     );
