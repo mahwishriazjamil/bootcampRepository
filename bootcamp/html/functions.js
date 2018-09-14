@@ -358,7 +358,7 @@ function toggleSignIn() {
   
   function read_profiles(){//work in progress.
     var UID=firebase.auth().currentUser.uid;
-    var query = database.ref("RCS_Users").orderByChild("UID").equalTo(UID);
+    var query = database.ref("RCS_Users/").orderByChild("UID").equalTo(UID);
 
 query.on("child_added", function(snapshot){
     
@@ -385,9 +385,9 @@ $("#table_body").append(
 });
 
 query.on("child_changed", function(snapshot){
-
+console.log("entry was changed")
 var name = snapshot.child("name").val();
-var key = snapshot.child("Profile_id").val();
+var key = snapshot.child("Profile_Id").val();
 var msisdn = snapshot.child("msisdn").val();
 
 $("#"+key).replaceWith(
@@ -410,10 +410,18 @@ $("#"+key).replaceWith(
 
 query.on('child_removed', function(data) {
     console.log("entry was deleted");
-    read_profiles();
-    return read_profiles();
+    window.location.reload(true);
+    //read_profiles();
+    //return read_profiles();
     });
 
 }	
 
-console.log(globalString);
+function create(){
+  var p = "12rfdfdf";
+  console.log("property p: " + p);
+  var c = $("#myid").replaceWith("<a href='pageB.html?Parameter1=" + p + "'>link</a>");
+  console.log(c);
+  $("#myid").append("<a href='pageB.html?Parameter1=p' >link</a>");
+  console.log("here");
+}
