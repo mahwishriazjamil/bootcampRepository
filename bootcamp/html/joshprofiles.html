@@ -1,0 +1,89 @@
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script><script src ="functions.js"></script>
+
+<html lang="en"><head>
+  <title>Agenda</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    
+	
+		
+		<script type="text/javascript"> 
+		//var UID=firebase.auth().currentUser.uid;
+		initializeFirebase();
+			 	//
+			 	//;}
+		     
+		</script>
+		<script src="RtesFakeBackend.js"></script>
+		<script>
+		firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+			// User is signed in.
+			read_profiles() //
+         } else {
+			// No user is signed in.
+			signOut();
+  			}
+		});
+		
+		</script>
+
+		<style>
+
+		img {
+			border-radius: 50%;
+			border-size: 40%;
+			width: 100px; 
+			height: 100px;
+		}
+
+		#name {
+			font-family: Helvetica;
+			font-weight: bold;
+			font-size: 18px;
+			color: #000000;
+		}
+
+		#number {
+			font-family: Helvetica;
+			font-weight: regular;
+			font-size: 16px;
+			color: #A9A9A9;
+		}
+
+	</style>
+
+</head>
+
+<body>
+  <script>src="read.js"</script>
+	<div class="container-fluid text-center">
+	  <div class="row content">
+
+		<div class="col-md-12 text-middle">
+<br>
+
+	<img src="https://thumb.ibb.co/fGHxAU/vf_logo_large.png" alt="" width="72" height="72">
+
+	
+	<div class="container" id="table_body">
+		
+	</div>
+
+<div>
+	<br>
+    <div class="col-sm">
+			<button type="button" class="btn btn-light"><a href="newContact.html">Add Contact</a></button>
+	</div>
+</div>
+
+
+	</div>
+</div>
+
+</div></div></body></html>
