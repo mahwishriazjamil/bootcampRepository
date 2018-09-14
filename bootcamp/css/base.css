@@ -16,3 +16,7 @@ body {
 #divtocheck > a{
     color: white;
 }
+.glyphicon{
+    font-size: 25px;
+    padding-right: 10px;
+}
