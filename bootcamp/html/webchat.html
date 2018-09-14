@@ -1,3 +1,10 @@
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script><script src ="functions.js"></script>
+    <script type="text/javascript">
+    var url_string = window.location.href;
+                var url = new URL(url_string);
+    			var c = url.searchParams.get("Profile_ID");
+    			console.log(c)
+    			</script>
 <html>
   <head>
     <script src="bootstrap.min.js"></script>
@@ -6,8 +13,10 @@
     <link rel="stylesheet" href="../css/webchat.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
+
     //var UID=firebase.auth().currentUser.uid;
     initializeFirebase();
         //
@@ -19,7 +28,8 @@
     firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             // User is signed in.
-            showConversation(c) //
+            showConversation(c)
+            create(); //
                } else {
             // No user is signed in.
             signOut();
