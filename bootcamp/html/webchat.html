@@ -7,7 +7,26 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head> 
+    <script type="text/javascript">
+    //var UID=firebase.auth().currentUser.uid;
+    initializeFirebase();
+        //
+        //;}
+
+    </script>
+    <script src="webchatFunctions.js"></script>
+    <script>
+    firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            showConversation(c) //
+               } else {
+            // No user is signed in.
+            signOut();
+              }
+          });
+    </script>
+  </head>
   <body>
   <section>
     <div class="container text-center">
@@ -18,12 +37,12 @@
           <p id="glyphiconLink">
               <a href="profiles.html" id="glyphiconLink">
                 <span class="glyphicon glyphicon-user"></span>
-              </a>  
+              </a>
         <p id="glyphiconLink">
               <a href="agenda.html" >
                 <span class="glyphicon glyphicon-tasks"></span>
               </a>
-            </p> 
+            </p>
         <p id="glyphiconLink">
             <a href="settings.html" id="glyphiconLink">
               <span class="glyphicon glyphicon-cog"></span>
@@ -49,14 +68,14 @@
             document.write("</div>")
             document.write("</li>")
           }
-          document.write("</ul>")  
-        
-          
+          document.write("</ul>")
+
+
       function openNav() {
           document.getElementById("mySidenav").style.width = "250px";
           document.getElementById("main").style.marginLeft = "250px";
       }
-      
+
       function closeNav() {
           document.getElementById("mySidenav").style.width = "0";
           document.getElementById("main").style.marginLeft= "0";
@@ -71,12 +90,13 @@
           <div class="row">
             <input  class="col-md-10 col-7 form-control" id="newid" type="text" placeholder="Message..." [(ngModel)]="message"  />
             <button class="col-md-2 col-2 btn btn-danger"(click)="" id="sendmessagebutton">Send</button>
-          </div>  
+          </div>
         </div>
       </div>
     </div>
+
+
   </section>
 
       </body>
 </html>
-
