@@ -354,3 +354,66 @@ function toggleSignIn() {
     var db = firebase.database();
     db.ref("RCS_Users/"+profile_id+"/"+catergory).set(newValue);
   }
+
+  
+  function read_profiles(){//work in progress.
+    var UID=firebase.auth().currentUser.uid;
+    var query = database.ref("RCS_Users").orderByChild("UID").equalTo(UID);
+
+query.on("child_added", function(snapshot){
+    
+    
+var name = snapshot.child("name").val();
+var key = snapshot.child("Profile_Id").val();
+var msisdn = snapshot.child("msisdn").val();
+
+$("#table_body").append(
+        "<div id='"+key+"' class='row' style='border:10px gray'>" +
+            "<div class='col-sm'>" +
+                "<img src='https://thumb.ibb.co/fO6ps9/514623738_612x612.jpg' alt='Louanne Gervais></div>" +
+                "<div class='col-sm'>" +
+                    "<p id='name'>"+name+"</p>" +
+                    "<p id='number'>"+msisdn+"</p>" +
+                    "</div>" + 
+            " <div class='col-sm'>" +
+                "<button type='button' class='btn btn-light'><a href='Webchat1.html'>Chat</a></button>" +
+                "<button type='button' class='btn btn-light'><a href='editContact.html'>Edit Contact</a></button>" +
+            "</div>" +
+        "</div>"
+    );
+    
+});
+
+query.on("child_changed", function(snapshot){
+
+var name = snapshot.child("name").val();
+var key = snapshot.child("Profile_id").val();
+var msisdn = snapshot.child("msisdn").val();
+
+$("#"+key).replaceWith(
+    "<div id='"+key+"' class='row' style='border:10px gray'>" +
+            "<div class='col-sm'>" +
+                "<img src='https://thumb.ibb.co/fO6ps9/514623738_612x612.jpg' alt='Louanne Gervais>" +
+            "</div>" +
+            "<div class='col-sm'>" +
+                "<p id='name'>"+name+"</p>" +
+                "<p id='number'>"+msisdn+"</p>" +
+            "</div>" + 
+            " <div class='col-sm'>" +
+                "<button type='button' class='btn btn-light'><a href='Webchat1.html'>Chat</a></button>" +
+                "<button type='button' class='btn btn-light'><a href='editContact.html'>Edit Contact</a></button>" +
+            "</div>" +
+        "</div>"
+    );
+});
+
+
+query.on('child_removed', function(data) {
+    console.log("entry was deleted");
+    read_profiles();
+    return read_profiles();
+    });
+
+}	
+
+console.log(globalString);
