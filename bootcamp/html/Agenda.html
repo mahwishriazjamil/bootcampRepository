@@ -1,3 +1,5 @@
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script><script src ="functions.js"></script>
+
 <html lang="en"><head>
   <title>Agenda</title>
 	<meta charset="utf-8">
@@ -7,20 +9,36 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-
-	<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
-		<script src="RtesFakeBackend.js"></script>
+    
+	
+		
 		<script type="text/javascript"> 
-			read_agenda_contacts('LKIA1uhgKqWLj9yKczhPXSu9o8v2', '1235gffsutee45');
+		//var UID=firebase.auth().currentUser.uid;
+		initializeFirebase();
+			 	//
+			 	//;}
+		     
 		</script>
-
+		<script src="RtesFakeBackend.js"></script>
+		<script>
+		firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+			// User is signed in.
+			read_agenda_contacts('1235gffsutee45') //
+         } else {
+			// No user is signed in.
+			signOut();
+  			}
+		});
+		
+		</script>
 
 		<style>
 
 		img {
 			border-radius: 50%;
 			border-size: 40%;
-			width: 100px;
+			width: 100px; 
 			height: 100px;
 		}
 

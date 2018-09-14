@@ -1,16 +1,16 @@
 
-            var config = {
-                apiKey: "AIzaSyD3dPT-gwDrtBnvo9_DQwlRVFL2IQ05RzM",
-                authDomain: "rtesbootcamp.firebaseapp.com",
-                databaseURL: "https://rtesbootcamp.firebaseio.com",
-                projectId: "rtesbootcamp",
-                storageBucket: "rtesbootcamp.appspot.com",
-                messagingSenderId: "623287477132"
-            };
+            // var config = {
+            //     apiKey: "AIzaSyD3dPT-gwDrtBnvo9_DQwlRVFL2IQ05RzM",
+            //     authDomain: "rtesbootcamp.firebaseapp.com",
+            //     databaseURL: "https://rtesbootcamp.firebaseio.com",
+            //     projectId: "rtesbootcamp",
+            //     storageBucket: "rtesbootcamp.appspot.com",
+            //     messagingSenderId: "623287477132"
+            // };
 
-            // Initialize your Firebase app
-            firebase.initializeApp(config);
-			 
+            // // Initialize your Firebase app
+            // firebase.initializeApp(config);
+            // console.log("Firebase initialized");
 			// Get a reference to the database service
 			var database = firebase.database();
 
@@ -64,10 +64,13 @@
 			
            
 
-			function read_agenda_contacts(user_id, rcs_profile_id){
-                var query = database.ref("rcs_user_agenda").orderByChild("user_id").equalTo(user_id);
+			function read_agenda_contacts(rcs_profile_id){
+                //var UID=firebase.auth().currentUser.uid;
+                var query = database.ref("rcs_user_agenda").orderByChild("rcs_profile_id").equalTo(rcs_profile_id);
 
 			query.on("child_added", function(snapshot){
+                
+                
 				var name = snapshot.child("contact_name").val();
 				var key = snapshot.child("agenda_entry_id").val();
 				var msisdn = snapshot.child("contact_msisdn").val();
@@ -86,6 +89,7 @@
                         "</div>" +
                     "</div>"
                 );
+                
 			});
 
 			query.on("child_changed", function(snapshot){
@@ -114,8 +118,8 @@
 
             query.on('child_removed', function(data) {
                 console.log("entry was deleted");
-                read_agenda_contacts(user_id, rcs_profile_id);
-                return read_agenda_contacts(user_id, rcs_profile_id);
+                read_agenda_contacts(UID, rcs_profile_id);
+                return read_agenda_contacts(UID, rcs_profile_id);
                 });
 			
 			}	
