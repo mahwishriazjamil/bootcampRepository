@@ -2,9 +2,22 @@
 <script type = "text/javascript">
 initializeFirebase();
 var url_string = window.location.href;
-            var url = new URL(url_string);
-			var c = url.searchParams.get("Profile_ID");
-			console.log(c)
+var url = new URL(url_string);
+var c = url.searchParams.get("Profile_ID");
+console.log(c)
+var url_string2 = window.location.href;
+var url2 = new URL(url_string2);
+var ag = url2.searchParams.get("agendaEntry");
+console.log(ag)
+firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+			// User is signed in.
+			editPlaceholderGen();
+         } else {
+			// No user is signed in.
+			signOut();
+  			}
+		});
 			</script>
 <html lang="en"><head>
   <title>Edit Contact</title>
@@ -74,11 +87,11 @@ var url_string = window.location.href;
     </div>
     <div class="form-group">
 
-      <input type="password" class="form-control" id="msisdn" placeholder="Change MSISDN">
+      <input type="tel" class="form-control" id="msisdn" placeholder="Change MSISDN">
     </div>
 
-	<button type="button" class="btn btn-outline-danger">Delete</button>
-    <button type="submit" class="btn btn-default"><a href="Agenda.html">Done</a></button>
+	<button type="button" class="btn btn-outline-danger" onclick="rcsUserEdit(ag,document.getElementById('name').value,document.getElementById('msisdn').value)">Edit</button>
+    <button type="submit" id ="doneButton" class="btn btn-default"><a href="Agenda.html?Profile_ID="+c>Done</a></button>
 
   </form>
 </div>
@@ -87,6 +100,6 @@ var url_string = window.location.href;
 
 
 
-
+<script>doneButton()</script>
 
 </body></html>
