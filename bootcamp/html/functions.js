@@ -350,13 +350,15 @@ function initializeFirebase(){
       window.alert("Profile with id: "+profile_id+", has been deleted.")   
     }
   
-    function testEdit(profile_id,catergory,newValue){
+    function rcsUserEdit(entryId,newValue1,newValue2){
       var db = firebase.database();
-      db.ref("RCS_Users/"+profile_id+"/"+catergory).set(newValue);
+      db.ref("rcs_user_agenda/"+entryId+"/contact_msisdn").set(newValue1);
+      db.ref("rcs_user_agenda/"+entryId+"/contact_name").set(newValue2);
+      window.alert("details changed");
     }
   
     
-    function read_profiles(){//work in progress.
+    function read_profiles(){
       var UID=firebase.auth().currentUser.uid;
       var query = database.ref("RCS_Users/").orderByChild("UID").equalTo(UID);
   
@@ -439,4 +441,22 @@ function initializeFirebase(){
   
   );
   }
+
+  function doneButton(){
+    $("#doneButton").replaceWith(
+     
+      
+          "<button type='button' class='btn btn-light'><a href='agenda.html?Profile_ID="+c+"'>Back</a></button>")
+         
+     
+  }
   
+  function editPlaceholderGen(){
+
+    $("#name").replaceWith(
+     
+      
+      "<input type='name' class='form-control' id='name' placeholder='Change name'>")
+     
+ 
+}
