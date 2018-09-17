@@ -9,7 +9,15 @@ var url_string2 = window.location.href;
 var url2 = new URL(url_string2);
 var ag = url2.searchParams.get("agendaEntry");
 console.log(ag)
-      
+firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+			// User is signed in.
+			editPlaceholderGen();
+         } else {
+			// No user is signed in.
+			signOut();
+  			}
+		});
 			</script>
 <html lang="en"><head>
   <title>Edit Contact</title>

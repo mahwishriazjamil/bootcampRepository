@@ -352,8 +352,8 @@ function initializeFirebase(){
   
     function rcsUserEdit(entryId,newValue1,newValue2){
       var db = firebase.database();
-      db.ref("rcs_user_agenda/"+entryId+"/contact_msisdn").set(newValue1);
-      db.ref("rcs_user_agenda/"+entryId+"/contact_name").set(newValue2);
+      db.ref("rcs_user_agenda/"+entryId+"/contact_msisdn").set(newValue2);
+      db.ref("rcs_user_agenda/"+entryId+"/contact_name").set(newValue1);
       window.alert("details changed");
     }
   
@@ -453,10 +453,24 @@ function initializeFirebase(){
   
   function editPlaceholderGen(){
 
+    var database=firebase.database()
+    var query = database.ref("rcs_user_agenda").orderByChild("agenda_entry_id").equalTo(ag);
+
+    query.on("child_added", function(snapshot){
+              
+              
+      var name = snapshot.child("contact_name").val();
+      var msisdn = snapshot.child("contact_msisdn").val();
     $("#name").replaceWith(
      
       
-      "<input type='name' class='form-control' id='name' placeholder='Change name'>")
+      "<input type='name' class='form-control' id='name' placeholder="+name+">")
+
+      $("#msisdn").replaceWith(
      
- 
+      
+        "<input type='tel' class='form-control' id='msisdn' placeholder="+msisdn+">")
+  
+     
+    })
 }
