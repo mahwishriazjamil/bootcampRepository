@@ -5,7 +5,7 @@
                 var url = new URL(url_string);
     			var c = url.searchParams.get("Profile_ID");
           console.log(c)
-         // 
+         //
     			</script>
 <html>
   <head>
@@ -19,13 +19,13 @@
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    
+
     <script src="webchatFunctions.js"></script>
     <script>
     firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             // User is signed in.
-            showConversation(c) 
+            showConversation(c)
             ;
                } else {
             // No user is signed in.
@@ -57,7 +57,7 @@
 
         </div>
         <div class="container" id="Button2"></div>
-      
+
         <script>
          webchatButton()
           document.write("<div class=\"card col-md-4 col-4\" id=\"chatmenu\"  style=\"overflow:scroll;\">")
@@ -65,6 +65,7 @@
 
           for(var i=0; i<3; i++) {
             document.write("<li class=\"list-group-item\" >")
+            document.write("<a href = \"https://www.google.com\">")
             document.write("<div class=\"\">")
             document.write("<img src=\"img/avatar.png\" alt=\"Avatar\" class=\"avatar\" id=\"icons\"> ")
             document.write("<h5 class=\"mb-1\">Name</h5>")
@@ -74,6 +75,7 @@
             document.write("<div>")
             document.write("<p id=\"lastMessage\">Last msg</p>")
             document.write("</div>")
+            document.write("</a>")
             document.write("</li>")
           }
           document.write("</ul>")
@@ -98,9 +100,9 @@
           <div class="row">
             <input  class="col-md-10 col-7 form-control" id="newid" type="text" placeholder="Message..." [(ngModel)]="message"  />
             <button class="col-md-2 col-2 btn btn-danger"(click)="" id="sendmessagebutton">Send</button>
-            
 
-              
+
+
                </div>
         </div>
       </div>
