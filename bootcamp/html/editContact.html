@@ -1,4 +1,11 @@
-
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script><script src ="functions.js"></script>
+<script type = "text/javascript">
+initializeFirebase();
+var url_string = window.location.href;
+            var url = new URL(url_string);
+			var c = url.searchParams.get("Profile_ID");
+			console.log(c)
+			</script>
 <html lang="en"><head>
   <title>Edit Contact</title>
   <meta charset="utf-8">
@@ -83,7 +90,3 @@
 
 
 </body></html>
-<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script><script src="./functions.js"></script>
-<script>
- initializeFirebase();
-</script>

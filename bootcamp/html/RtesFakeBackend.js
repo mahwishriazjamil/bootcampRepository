@@ -85,7 +85,7 @@
                                 "</div>" + 
                         " <div class='col-sm'>" +
                             "<button type='button' class='btn btn-light'><a href='webchat.html?Profile_ID="+c+"'>Chat</a></button>" +
-                            "<button type='button' class='btn btn-light'><a href='editContact.html'>Edit Contact</a></button>" +
+                            "<button type='button' class='btn btn-light'><a href='editContact.html?Profile_ID="+c+"'>Edit Contact</a></button>" +
                         "</div>" +
                     "</div>"
                 );
@@ -108,8 +108,8 @@
                             "<p id='number'>"+msisdn+"</p>" +
                         "</div>" + 
                         " <div class='col-sm'>" +
-                            "<button type='button' class='btn btn-light'><a href='webchat.html'>Chat</a></button>" +
-                            "<button type='button' class='btn btn-light'><a href='editContact.html'>Edit Contact</a></button>" +
+                            "<button type='button' class='btn btn-light'><a href='webchat.html?Profile_ID="+c+"'>Chat</a></button>" +
+                            "<button type='button' class='btn btn-light'><a href='editContact.html?Profile_ID="+c+"'>Edit Contact</a></button>" +
                         "</div>" +
                     "</div>"
                 );
