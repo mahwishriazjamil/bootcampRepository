@@ -147,7 +147,8 @@ function initializeFirebase(){
         console.log(error);
         // [END_EXCLUDE]
       });
-      // [END createwithemail]
+      window.alert("Please click verify email to finish");
+      document.getElementById("verify").disabled = false;
     }
     /**
      * Sends an email verification to the user.
@@ -246,15 +247,8 @@ function initializeFirebase(){
       
     }
     
-    function customSignUp(){
-      handleSignUp();
-      document.getElementById("verify").disabled = false;
-    }
-  
-    function testInput(email){
-        window.alert(email)
-    }
-  
+      
+      
     function getUID(){
       firebase.auth().onAuthStateChanged( user => {
         if (user) { this.userId = user.uid }
@@ -355,6 +349,13 @@ function initializeFirebase(){
       db.ref("rcs_user_agenda/"+entryId+"/contact_msisdn").set(newValue2);
       db.ref("rcs_user_agenda/"+entryId+"/contact_name").set(newValue1);
       window.alert("details changed");
+    }
+
+    function rcsProfileEdit(profile_id){
+
+
+      var db = firebase.database();
+      db.ref("RCS_Users/"+profile_id).update();
     }
   
     
