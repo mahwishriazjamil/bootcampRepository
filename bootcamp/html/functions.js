@@ -352,10 +352,75 @@ function initializeFirebase(){
     }
 
     function rcsProfileEdit(profile_id){
+     var db = firebase.database();
+     var name = document.getElementById('Name').value;
+     var msisdn = document.getElementById('MSISDN').value;
+     var mcc = document.getElementById('MCC').value;
+     var mnc = document.getElementById('MNC').value;
+     var ims_domain =document.getElementById('IMS-Domain').value;
+     var realm = document.getElementById('Realm').value;
+     var ims_password = document.getElementById('IMS-Password').value;
+     var grch_uri = document.getElementById('GrCh-Conference-URI').value;
+     var file_transfer_http_url = document.getElementById('File-Transfer-HTTP-URL').value;
+     var file_transfer_alias= document.getElementById('File-Transfer-Alias').value;
+     var server_ip = document.getElementById('Server-IP').value;
+     var file_transfer_token = document.getElementById('File-Transfer-Token').value;
+     var server_tcp_port= document.getElementById('Server-TCP-Port').value;
+     var ims_username = document.getElementById('IMS-Username').value;
+     if (!(name==null)){
+       db.ref("RCS_Users/"+profile_id).update({"name": name});
 
+     }
+     if (!(msisdn==null)){
+      db.ref("RCS_Users/"+profile_id).update({"msisdn": msisdn});
 
-      var db = firebase.database();
-      db.ref("RCS_Users/"+profile_id).update();
+    }if (!(mcc==null)){
+      db.ref("RCS_Users/"+profile_id).update({"mcc":mcc});
+
+    }if (!(name==null)){
+      db.ref("RCS_Users/"+profile_id).update({"name": name});
+
+    }if (!(ims_username==null)){
+      db.ref("RCS_Users/"+profile_id).update({"ims_username":ims_username});
+
+    }if (!(server_tcp_port==null)){
+      db.ref("RCS_Users/"+profile_id).update({"server_port":server_tcp_port});
+
+    }if (!(file_transfer_token==null)){
+      db.ref("RCS_Users/"+profile_id).update({"file_transfer_token": file_transfer_token});
+
+    }if (!(server_ip==null)){
+      db.ref("RCS_Users/"+profile_id).update({"server_ip": server_ip});
+
+    }if (!(file_transfer_alias==null)){
+      db.ref("RCS_Users/"+profile_id).update({"file_transfer_alias":file_transfer_alias});
+
+    }if (!(file_transfer_http_url==null)){
+      db.ref("RCS_Users/"+profile_id).update({"file_transfer_http_url": file_transfer_http_url});
+
+    }if (!(grch_uri==null)){
+      db.ref("RCS_Users/"+profile_id).update({"grch_uri": grch_uri});
+
+    }if (!(ims_domain==null)){
+      db.ref("RCS_Users/"+profile_id).update({"ims_domain":ims_domain});
+
+    }if (!(ims_password==null)){
+      db.ref("RCS_Users/"+profile_id).update({"ims_password":ims_password});
+
+    }if (!(ims_username==null)){
+      db.ref("RCS_Users/"+profile_id).update({"ims_username": ims_username});
+
+    }
+    if (!(realm==null)){
+      db.ref("RCS_Users/"+profile_id).update({"realm": realm});
+
+    }if (!(mnc==null)){
+      db.ref("RCS_Users/"+profile_id).update({"mnc": mnc});
+
+    }
+
+    window.alert("Changes Made")
+      
     }
   
     
@@ -380,7 +445,7 @@ function initializeFirebase(){
                       "</div>" + 
               " <div class='col-sm'>" +
                   "<button type='button' class='btn btn-light'><a href='webchat.html?Profile_ID="+key+"'>Chat</a></button>" +
-                  "<button type='button' class='btn btn-light'><a href='editRCSProfile.html'>Edit Profile</a></button>" +
+                  "<button type='button' class='btn btn-light'><a href='editRCSProfile.html?Profile_ID="+key+"'>Edit Profile</a></button>" +
               "</div>" +
           "</div>"
       );
@@ -474,4 +539,79 @@ function initializeFirebase(){
   
      
     })
+}
+
+function editPlaceholderGenUser(){
+  var database=firebase.database()
+  var query = database.ref("RCS_Users").orderByChild("Profile_Id").equalTo(c);
+  query.on("child_added",function(snapshot){
+  var file_transfer_aias = snapshot.child("file_transfer_aias").val();
+  var file_transfer_http_url= snapshot.child("file_transfer_http_url").val();
+  var file_transfer_token= snapshot.child("file_transfer_token").val();
+  var grch_uri= snapshot.child("grch_uri").val();
+  var ims_domain =snapshot.child("ims_domain").val();
+  var ims_username= snapshot.child("ims_username").val();
+  var ims_password =snapshot.child("ims_password").val();
+  var mcc= snapshot.child("mcc").val();
+  var mnc= snapshot.child("mn").val();
+  var msisdn= snapshot.child("msisdn").val();
+  var name= snapshot.child("name").val();
+  var server_ip= snapshot.child("server_ip").val();
+  var server_port= snapshot.child("server_port").val();
+  var realm =snapshot.child("realm").val();
+
+  $("#form").replaceWith(
+
+    "<div class='row'>"+
+    "<div class= 'col-md-12'>"+
+      "  <div class= 'col-md-6'>"+
+          
+           " <label for='Name'>Name:</label>"+
+            "<input type='text' class='form-control' id='Name' placeholder='Enter Name'>"+
+
+           " <label for='MSISDN'>MSISDN:</label>"+
+           " <input type='tel' class='form-control' id='MSISDN' placeholder='Enter MSISDN'>"+
+
+            "<label for='MCC'>MCC:</label>"+
+            "<input type='text' class='form-control' id='MCC' placeholder='Enter MCC'>"+
+
+            "<label for='MNC'>MNC:</label>"+
+            "<input type='text' class='form-control' id='MNC' placeholder='Enter MNC'>"+
+
+            "<label for='IMS-Domain'>IMS-Domain:</label>"+
+            "<input type='text' class='form-control' id='IMS-Domain' placeholder='Enter IMS-Domain'>"+
+
+           "<label for='Realm'>Realm:</label>"+
+           "<input type='text' class='form-control' id='Realm' placeholder='Enter Realm'>"+
+
+           "<label for='IMS-Password'>IMS-Password:</label>"+
+           "<input type='text' class='form-control' id='IMS-Password' placeholder='Enter IMS-Password'>"+
+      "</div>"+
+      "<div class= 'col-md-6'>"+
+       " <label for='IMS-Username'>IMS-Username:</label>"+
+        "<input type='text' class='form-control' id='IMS-Username' placeholder='Enter IMS-Password'>"+
+
+        "<label for='GrCh Conference-URI'>GrCh Conference-URI:</label>"+
+        "<input type='text' class='form-control' id='GrCh-Conference-URI' placeholder='Enter GrCh Conference-URI'>"+
+
+        "<label for='File Transfer HTTP-URL'>File Transfer HTTP-URL:</label>"+
+        "<input type='text' class='form-control' id='File-Transfer-HTTP-URL' placeholder='Enter File Transfer URL'>"+
+
+        "<label for='File Transfer Alias'>File Transfer Alias:</label>"+
+        "<input type='text' class='form-control' id='File-Transfer-Alias' placeholder='Enter File Transfer Alias'>"+
+
+        "<label for='File Transfer Token'>File Transfer Token:</label>"+
+        "<input type='text' class='form-control' id='File-Transfer-Token' placeholder='Enter File Transfer Token'>"+
+
+        "<label for='Server FQDN/IP'>Server FQDN/IP:</label>"+
+        "<input type='text' class='form-control' id='Server-IP' placeholder='Enter File Transfer FQDN/IP'>"+
+
+        "<label for='Server TCP Port'>Server TCP Port:</label>"+
+        "<input type='text' class='form-control' id='Server-TCP-Port' placeholder='Enter Server TCP Port'>"+
+       "</div>"+
+     " </div>"+
+     "</div>"
+  )
+
+  })
 }

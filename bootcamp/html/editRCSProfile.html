@@ -17,9 +17,15 @@
           initializeFirebase();
           autoSignOut();
           //testPush();
-          }
+          } </script>
+          <script type = "text/javascript">
+      var url_string = window.location.href;
+      var url = new URL(url_string);
+			var c = url.searchParams.get("Profile_ID");
+			console.log(c)
+			</script>
 
-      </script>
+     
 <body>
     <div class="container text-center">
         <h1 id="headingtext">V-Message</h1>
@@ -27,7 +33,7 @@
         <br>
         <button class="btn btn-default"id="float-right"  onclick="signOut();">Sign Out</button>
     </div>
-  <div class="container">
+  <div class="container" id="form">
     <h1>Edit RCS User</h1>
     <h3>Please fill in fields below</h3>
   <div class="row">
@@ -79,8 +85,8 @@
              </div>
             </div>
            </div>
-            <script src="./functions.js"></script><script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-            <button type="button" id="float-right" class="btn btn-default" onclick="rcsProfileEdit()">Submit</button>
+            
+            <button type="button" id="float-right" class="btn btn-default" onclick="rcsProfileEdit(c)">Edit</button>
     </form>
   </div>
 </body>
